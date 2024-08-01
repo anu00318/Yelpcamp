@@ -26,7 +26,7 @@ const userRoutes = require('./routes/users')
 const campgroundRoutes = require('./routes/campgrounds');
 const reviewRoutes = require('./routes/reviews');
 const dbUrl = process.env.DB_URL;
-
+const sec = process.env.Discreet;
 
 const MongoStore = require('connect-mongo');
 
@@ -101,14 +101,14 @@ const store = MongoStore.create({
     mongoUrl: dbUrl,
     touchAfter: 24 * 60 * 60,
     crypto: {
-        secret: 'thisshouldbeabettersecret!'
+        secret: sec
     }
 });
 
 const sessionConfig = {
     store,
     name: 'session',
-    secret: 'thisshouldbeabettersecret!',
+    secret: sec,
     resave: false,
     saveUninitialized: true,
     cookie: {
