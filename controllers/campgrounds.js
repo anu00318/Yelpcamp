@@ -2,6 +2,24 @@ const Campground = require('../models/campground');
 const { cloudinary } = require("../cloudinary");
 const maptilerClient = require("@maptiler/client");
 maptilerClient.config.apiKey = process.env.MAPTILER_API_KEY;
+
+
+module.exports.search = async(req,res) => {
+    const searchInput = req.query.q ? req.query.q.trim().toLowerCase() : '';
+
+    let campgrounds = [];
+    if (searchInput) {
+        campgrounds = await Campground.find({ 
+            location: { $regex: searchInput, $options: 'i' } 
+        });
+    } else {
+        campgrounds = await Campground.find({});
+    }
+
+    res.render('campgrounds/index', { campgrounds });
+}
+
+
 module.exports.index = async (req, res) => {
     const campgrounds = await Campground.find({});
     res.render('campgrounds/index', { campgrounds })
