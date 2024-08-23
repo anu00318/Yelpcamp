@@ -1,0 +1,36 @@
+#cardin {
+    transition: box-shadow 0.3s ease, border 0.3s ease;
+    border: 1px solid transparent; /* Border only when hovered */
+  }
+  
+  #cardin:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border: 1px solid #ddd; /* Light border on hover */
+  }
+  
+  #cardin .btn {
+    border: 1px solid transparent; /* Border only when not hovered */
+  }
+  
+  #cardin .btn:hover {
+    border: 1px solid #007bff; /* Border color on hover */
+  }
+ 
+#cardin {
+    height: 450px;
+    width: 400px;
+    display:inline-block;
+    margin: 10px;
+}
+
+#img {
+    width: 380px;
+    height: 220px;
+}
+
+#cluster-map {
+  position: fixed;
+  width:100%;
+  height:100%;
+}
+
